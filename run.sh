@@ -6,6 +6,6 @@ NAME="jmeter"
 IMAGE="justb4/jmeter:5.1.1"
 
 # Finally run
-sudo docker stop ${NAME} > /dev/null 2>&1
-sudo docker rm ${NAME} > /dev/null 2>&1
-sudo docker run --name ${NAME} -i -v ${PWD}:${PWD} -w ${PWD} ${IMAGE} $@
+docker stop ${NAME}
+docker rm ${NAME}
+docker run --name ${NAME} -i -v ${PWD}:${PWD} -w ${PWD} --user $(id -u):$(id -g) ${IMAGE} $@
